@@ -609,13 +609,11 @@ fn main() -> Result<()> {
     let metalib = read_metalib(&mut file)?;
 
     let _xml_data = export_metalib_xml(&metalib)?;
-    // println!("{_xml_data}");
-
 
     // Find input file name
     let input_path_stem: String = Path::new(input_filepath).file_stem().unwrap().to_string_lossy().to_string();
 
-    let mut file = File::create(format!("./output/{input_path_stem}.xml"))?;
+    let mut file = File::create(format!("./output/{input_path_stem}_{offset:X}.xml"))?;
     file.write_all(_xml_data.as_bytes())?;
 
     Ok(())

@@ -827,7 +827,7 @@ pub struct Metalib {
     pub names: Vec<TDRNameEntry>,
     pub meta_map: Vec<TDRMapEntry>,
     pub metas: Vec<TDRMeta>,
-    pub macrogroup_map: Vec<TDRMapEntry>,
+    // pub macrogroup_map: Vec<TDRMapEntry>,
     pub macrogroups: Vec<TDRMacroGroup>,
 }
 
@@ -948,13 +948,13 @@ where
         metas.push(entry);
     }
 
-    // MacroGroup Map
-    _ = rdr.seek(SeekFrom::Start(header.ptr_macro_group_map as u64));
-    let mut macrogroup_map: Vec<TDRMapEntry> = Vec::new();
-    for _ in 0..header.cur_meta_num {
-        let entry = read_tdr_map_entry(&mut rdr)?;
-        macrogroup_map.push(entry);
-    }
+    // // MacroGroup Map
+    // _ = rdr.seek(SeekFrom::Start(header.ptr_macro_group_map as u64));
+    // let mut macrogroup_map: Vec<TDRMapEntry> = Vec::new();
+    // for _ in 0..header.cur_meta_num {
+    //     let entry = read_tdr_map_entry(&mut rdr)?;
+    //     macrogroup_map.push(entry);
+    // }
 
     // MacroGroup table
     _ = rdr.seek(SeekFrom::Start(header.ptr_macros_group as u64));
@@ -972,7 +972,7 @@ where
         names,
         meta_map,
         metas,
-        macrogroup_map,
+        // macrogroup_map,
         macrogroups,
     })
 }
