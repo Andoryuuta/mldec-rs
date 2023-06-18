@@ -12,3 +12,6 @@ This was made specifically to aid with reverse engineering a single specific gam
 $ mldec <path to file containing compiled metalib> <starting offset in hex>
 ```
 * Outputs to `./output/*.xml`
+
+# Finding offset
+Compiled metalibs usually start with the bytes `D6 02 0B 00 20`. Simply search your .exe/.dll binary for this pattern in a hex editor and try dumping the found file offsets.
